@@ -1,6 +1,7 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
-sp = pd.read_excel("d:\Python-Workspace\Spotify_data.xlsx") #Opens and reads excel file
+sp = pd.read_excel("C:/Users/cookt/Documents/python_ws/Spotify_data.xlsx") #Opens and reads excel file
 period_sorted = ["More than 2 years",
                  "1 year to 2 years",
                  "6 months to 1 year",
@@ -41,3 +42,15 @@ sp_results.sort_values("Period", inplace=True) #Updates the dataframe while not 
 sp_results.reset_index(drop=True, inplace=True) #resets Index
 print(sp_results) 
 #returns Dataframe with filtered Data
+
+sp_results.plot(
+    x="Period",
+    y=["Yes_Percentage", "No_Percentage"],
+    kind="bar"
+)
+
+plt.title("Willingness to buy Premium")
+plt.xlabel("Usage period")
+plt.ylabel("percentage")
+plt.tight_layout()
+plt.show()
